@@ -5,7 +5,10 @@
   "productName": "Stuck at",
   "author": "Juan Ignacio Garzón",
   "private": false,
-  "repository": {"type": "git", "url": "https://github.com/jigarzon/stuckat.git"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jigarzon/stuckat.git"
+  },
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ./",
     "test": "echo \"No test specified\" && exit 0"
@@ -13,6 +16,11 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "cookie-parser": "^1.4.5",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.5.6",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },

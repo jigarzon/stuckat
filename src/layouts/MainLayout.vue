@@ -41,6 +41,7 @@
     </q-drawer>
 
     <q-page-container>
+      <a href="/auth/facebook">Login with Facebook</a>
       <router-view />
     </q-page-container>
   </q-layout>

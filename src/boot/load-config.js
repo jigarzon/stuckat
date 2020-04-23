@@ -3,7 +3,6 @@ import axios from 'axios'
 export default async ({ Vue, store, ssrContext }) => {
   let host
   if (ssrContext && ssrContext.req) {
-    console.log('SSR', process.env)
     const req = ssrContext.req
     var hostname = process.env.APP_HOST || 'localhost'
     var port = process.env.APP_PORT || 8989

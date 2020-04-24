@@ -69,7 +69,7 @@ export default {
           icon: 'person_pin'
         },
         {
-          key: 'cases.myCases',
+          key: 'case.myCases',
           route: '/cases',
           loggedIn: true,
           clazz: '',

@@ -34,3 +34,4 @@ yarn-error.log*
 config_app*.json
 config_deploy.env
 config_run.env
+res

@@ -3,6 +3,9 @@ const apiRoutes = require('./api')
 var express = require('express')
 var middleware = require('./middleware')
 const auth = require('./auth')
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+}
 module.exports.extendApp = function (context) {
   context.app.use(express.json())
   context.app.use(middleware(configs.appConfig))

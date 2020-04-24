@@ -1,19 +1,8 @@
 var passport = require('passport')
-var express = require('express')
-const authRouter = express.Router()
-var FacebookStrategy = require('passport-facebook').Strategy
+var FacebookTokenStrategy = require('passport-facebook-token')
 var config = require('./configs')
 var db = require('./db')
-var cookieParser = require('cookie-parser')
-var session = require('express-session')
 
-authRouter.post(
-  '/auth/login',
-  passport.authenticate('local', {
-    successRedirect: '/auth',
-    failureRedirect: '/auth/login'
-  })
-)
 passport.serializeUser(async function (user, done) {
   console.log('Serializing', user.id)
   done(null, user.id)
@@ -30,24 +19,30 @@ passport.deserializeUser(async function (id, done) {
     done(e)
   }
 })
-// var test = async function () {
-//   console.log('got db', dba)
-//   console.log('got col', dba.User)
-// }
-// test()
+
 passport.use(
-  new FacebookStrategy(
+  new FacebookTokenStrategy(
     {
       clientID: config.appConfig.auth.facebook.clientId,
-      clientSecret: config.appConfig.auth.facebook.clientSecret,
-      callbackURL: 'http://localhost:8989/auth/facebook/callback'
+      clientSecret: config.appConfig.auth.facebook.clientSecret
     },
     async function (accessToken, refreshToken, profile, done) {
       console.log('result login', accessToken, refreshToken, profile)
       var dba = await db.db()
+      var user = Object.assign({}, profile)
+      user.firstName = user.name.givenName
+      user.lastName = user.name.familyName
+      user.email = user.emails[0].value
+      user.avatar = user.photos[0].value
+      delete user.photos
+      delete user.emails
+      delete user.name
+      delete user._raw
+      delete user._json
+      console.log('creating', user)
       var result = await dba.User.findOneAndUpdate(
         { id: profile.id },
-        { $set: profile },
+        { $set: user },
         { upsert: true }
       )
       done(null, result.value)
@@ -55,23 +50,16 @@ passport.use(
   )
 )
 module.exports.handleAuth = function ({ app }) {
-  app.use(cookieParser())
-  app.use(session({ secret: 'keyboard cat' }))
   app.use(passport.initialize())
-  app.use(passport.session())
-  app.get(
-    '/auth/me',
-    passport.authenticate('facebook', { session: false }),
-    function (req, res) {
-      res.json({ id: req.user.id, username: req.user.username })
-    }
-  )
-  app.get('/auth/facebook', passport.authenticate('facebook'))
   app.get(
     '/auth/facebook/callback',
-    passport.authenticate('facebook', {
-      successRedirect: '/',
-      failureRedirect: '/login'
-    })
+    passport.authenticate('facebook-token'),
+    (req, res) => {
+      if (req.user) {
+        res.status(200).json(req.user)
+      } else {
+        res.send(401)
+      }
+    }
   )
 }

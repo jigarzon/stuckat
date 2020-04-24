@@ -1,13 +1,14 @@
 <template>
   <div class="row no-wrap q-py-md q-px-md">
     <div class="column" :class="{'order-last':inverted}" v-if="items">
-      <div class="text-subtitle1 q-mb-md">{{$t('user.settings')}}</div>
-      <menu-button v-for="item in items" :item="item" :key="item.key" class="q-mt-sm"/>
+      <menu-button v-for="item in items" :item="item" :key="item.key"
+        class="q-mt-sm" />
     </div>
 
-    <q-separator vertical inset class="q-mx-lg" v-if="items"/>
+    <q-separator vertical inset class="q-mx-lg" v-if="items" />
 
-    <div class="items-center col" :class="{'order-first':inverted, 'row' : inverted, 'column': !inverted}"
+    <div class="items-center col"
+      :class="{'order-first':inverted, 'row' : inverted, 'column': !inverted}"
       style="width:100px">
       <user-avatar :user="user" />
 
@@ -41,8 +42,7 @@ export default {
     }
   },
   data () {
-    return {
-    }
+    return {}
   }
 }
 </script>

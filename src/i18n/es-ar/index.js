@@ -17,5 +17,8 @@ export default {
   },
   cases: {
     myCases: 'Casos que reporté'
+  },
+  footer: {
+    text1: '2020'
   }
 }

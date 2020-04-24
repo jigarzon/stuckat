@@ -40,6 +40,12 @@
       </transition>
     </q-page-container>
     <login-dialog v-model="showLoginDialog" />
+    <q-footer>
+      <q-toolbar color="primary"
+        class="shadow-5 q-pa-xs">
+        {{$t('footer.text1')}}
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 

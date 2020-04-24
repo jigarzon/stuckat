@@ -12,10 +12,11 @@ A project to unite geographically stucked people developed in vue.js+quasar
 
 ### Actions:
 #### 1. I'm stucked
-1. Ask login
-2. Ask origin location
-3. Ask destination location
-4. Ask:
+show form with:
+1. enter login
+2. enter origin location
+3. enter destination location
+4. enter:
    1. how many people ar in this stucked group? [number]
    2. do they have mobility (car/truck/etc)? [yes/no]
    3. how many additional people can they carry? [number]

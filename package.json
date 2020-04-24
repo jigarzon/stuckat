@@ -18,11 +18,17 @@
     "axios": "^0.18.1",
     "cookie-parser": "^1.4.5",
     "express-session": "^1.17.1",
+    "leaflet": "^1.6.0",
     "mongodb": "^3.5.6",
+    "nested-object-assign": "^1.0.3",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
+    "passport-facebook-token": "^3.3.0",
     "quasar": "^1.0.0",
-    "vue-i18n": "^8.0.0"
+    "vue-authenticate": "^1.4.1",
+    "vue-i18n": "^8.0.0",
+    "vue2-leaflet": "^2.5.2",
+    "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",

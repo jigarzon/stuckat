@@ -5,17 +5,15 @@
         class="toolbar-main column items-stretch justify-center shadow-5">
         <div class="row items-center">
           <div class="col-auto q-px-xs row items-center">
-            <q-btn flat round @click="$router.push('/')"
-              :aria-label="$t('home')" class="button-logo q-pa-sm">
-              <q-icon name="home" />
-            </q-btn>
-            <div class="column" v-if="!isMobile">
-              <h1 style="display:inline" class="col-auto">
+            <q-btn flat round @click="$router.push('/')" icon="img:statics/logo-w.svg"
+              :aria-label="$t('home')" class="q-ma-none" size="lg"/>
+            <div class="column">
+              <h1 v-if="$q.screen.gt.xs" style="display:inline" class="col-auto">
                 <b>{{ $t("brand") }}</b>
               </h1>
-              <h2>{{ $t("general.slogan") }}</h2>
+              <h2  v-if="!isMobile">{{ $t("general.slogan") }}</h2>
             </div>
-            <span v-else
+            <span
               class="text-subtitle1 text-bold">{{$t($route.meta ? $route.meta.highlightMenu: '')}}</span>
           </div>
           <navigation-menu mode="desktop" class="col nav-menu-desktop"
@@ -101,17 +99,6 @@ export default {
     margin: 4px 0 0 10px;
     line-height: 100%;
   }
-
-  .button-logo {
-    // padding: 2px;
-    width: 80px;
-    height: 80px;
-
-    img {
-      width: 100%;
-    }
-  }
-
   @media screen and (max-width: $breakpoint-sm) {
     h1 {
       font-size: 16px;

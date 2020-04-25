@@ -6,7 +6,7 @@ export default async ({ app, router, Vue, store }) => {
     providers: {
       facebook: {
         clientId: config.auth.facebook.clientId,
-        redirectUri: config.auth.facebook.redirectUri,
+        // redirectUri: config.auth.facebook.redirectUri,
         responseType: 'token',
         authorizationEndpoint: config.auth.facebook.endpoint
       }

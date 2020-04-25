@@ -3,6 +3,7 @@
 
 export default {
   brand: 'Estamos Varados!',
+  ok: 'Ok',
   searchNearby: {
     label: 'Buscar gente cerca'
   },
@@ -14,6 +15,14 @@ export default {
     initSession: 'Iniciar sesión',
     loginBySocial: 'Iniciar sesión con redes sociales',
     welcomeMessage: 'Esperamos que puedas lograr volver a casa, {firstName}!'
+  },
+  address: {
+    province: 'Provincia',
+    locality: 'Localidad',
+    address: 'Dirección',
+    addressHint: 'No es necesaria una dirección exacta',
+    addressPlaceholder: 'Ej: San Martín 1200',
+    searching: 'Buscando ubicación'
   },
   home: 'Inicio',
   menu: 'Menú',
@@ -62,7 +71,7 @@ export default {
       color: 'light-green-7',
       fields: {
         origin: 'Origen',
-        originHint: 'Lugar donde estaba varado',
+        originHint: 'Lugar donde estabas varado',
         destination: 'Destino',
         destinationHint: 'A dónde volví',
         mobility: 'Volviste en auto?',
@@ -109,5 +118,8 @@ export default {
   },
   footer: {
     text1: '2020'
+  },
+  vmsg: {
+    required: 'Por favor ingresá un valor'
   }
 }

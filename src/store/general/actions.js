@@ -29,3 +29,14 @@ export async function revokeAuth ({ commit }) {
     commit('setUser', null)
   }
 }
+export async function loadProvinces ({ commit, state }) {
+  if (!state.provinces || state.provinces.length === 0) {
+    var url = this.$config.geoApiUrl + '/provincias?campos=id,nombre'
+    var resp = await this.$axios.get(url)
+    var provs = resp.data.provincias.map(x => ({
+      value: { id: x.id, label: x.nombre },
+      label: x.nombre
+    }))
+    commit('setProvinces', provs)
+  }
+}

@@ -18,4 +18,5 @@ export default async ({ Vue, store, ssrContext }) => {
     throw e
   }
   Vue.prototype.$config = config.data
+  store.$config = config.data
 }

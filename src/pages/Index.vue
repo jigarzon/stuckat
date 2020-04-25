@@ -6,16 +6,19 @@
     <span class="text-subtitle1" v-html="$t('landing.text3')" />
     <div class="row self-center items-stretch q-mt-md" style="max-width:600px">
       <div class="q-pa-sm col-12 col-sm-6">
-        <stuck-button :caseInfo="$t('case.case1')" />
+        <stuck-button :caseInfo="$t('case.stuck')" @click="create('stuck')" />
       </div>
       <div class="q-pa-sm col-12 col-sm-6">
-        <stuck-button :caseInfo="$t('case.case2')" />
+        <stuck-button :caseInfo="$t('case.relativeStuck')"
+          @click="create('relativeStuck')" />
       </div>
       <div class="q-pa-sm col-12 col-sm-6">
-        <stuck-button :caseInfo="$t('case.case3')" />
+        <stuck-button :caseInfo="$t('case.positiveExperience')"
+          @click="create('positiveExperience')" />
       </div>
       <div class="q-pa-sm col-12 col-sm-6">
-        <stuck-button :caseInfo="$t('case.case4')" />
+        <stuck-button :caseInfo="$t('case.negativeExperience')"
+          @click="create('negativeExperience')" />
       </div>
     </div>
   </q-page>
@@ -28,6 +31,11 @@ export default {
   mounted () {},
   components: {
     StuckButton
+  },
+  methods: {
+    create (type) {
+      this.$router.push({ path: '/my-case', query: { type } })
+    }
   }
 }
 </script>

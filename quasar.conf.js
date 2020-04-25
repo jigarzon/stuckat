@@ -17,6 +17,7 @@ module.exports = function (/* ctx */) {
       'axios',
       'load-config',
       'vuex-persist',
+      'validations',
       { path: 'vue-authenticate', server: false },
       { path: 'client-components', server: false }
     ],
@@ -56,7 +57,7 @@ module.exports = function (/* ctx */) {
       directives: [],
 
       // Quasar plugins
-      plugins: ['Cookies', 'Notify']
+      plugins: ['Cookies', 'Notify', 'Loading', 'LocalStorage']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie

@@ -1,5 +1,5 @@
 <template>
-  <q-form class="row">
+  <q-form class="row" @submit="save">
     <span class="col-12 text-h2 text-primary">{{fieldDesc.title}}</span>
     <span class="col-12 text-h6 q-py-md text-secondary"
       v-html="$t('case.createText')">
@@ -36,7 +36,11 @@
           <div class="text-h6">{{$t('case.additionalInfo')}}</div>
         </q-card-section>
         <q-card-section class="column">
-          <div class="row">
+          <div class="row q-gutter-md items-center">
+            <q-input type="number" style="min-width: 300px"
+              :label="fieldDesc.fields.stuckedPeopleCount"
+              v-if="fieldDesc.fields.stuckedPeopleCount"
+              v-model="currentCase.stuckedPeopleCount" />
             <q-toggle :label="fieldDesc.fields.mobility" left-label
               v-model="currentCase.mobility" />
             <q-input type="number" style="min-width: 300px"
@@ -96,7 +100,20 @@ export default {
       deep: true
     }
   },
-  methods: {},
+  methods: {
+    async save () {
+      try {
+        await this.$axios.post('/api/cases', this.currentCase)
+        this.$router.push('/my-case/saved')
+      } catch (e) {
+        var msg = e && e.response && e.response.statusText
+        this.$q.notify({
+          color: 'negative',
+          message: 'Error guardando el caso: ' + e + ' ' + msg
+        })
+      }
+    }
+  },
   computed: {
     fieldDesc () {
       return this.$t('case.' + this.type)

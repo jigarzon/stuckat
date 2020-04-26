@@ -5,7 +5,7 @@
       :rules="[$validations.required]" :label="$t('address.province')"
       @filter="filterProvince"></q-select>
     <q-select class="col-12 col-sm-4" v-model="address.locality" map-options dense
-      emit-value :rules="[$validations.required]" use-input
+      emit-value :rules="[$validations.required]" use-input clearable
       :options="localities" :label="$t('address.locality')" input-debounce="500"
       @filter="filterLocality"></q-select>
     <q-input class="col-12 col-sm-4" v-model="address.address" dense
@@ -22,6 +22,7 @@
             <div class="text-subtitle">Elegí la ubicación correcta</div>
           </q-card-section>
           <q-card-section style="max-height: 50vh;" class="scroll">
+            {{address}}
             <address-selector class="col" @input="setLocation($event)"
               :addresses="foundAddresses" />
           </q-card-section>
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+const removeAccents = require('remove-accents-diacritics')
 export default {
   components: {
     AddressSelector: () => import('components/AddressSelector')
@@ -69,8 +71,12 @@ export default {
     filterProvince (val, update, abort) {
       update(() => {
         const needle = val.toLowerCase()
+        removeAccents.remove(needle)
         this.provinces = this.$store.state.general.provinces.filter(
-          v => v.label.toLowerCase().indexOf(needle) > -1
+          v => {
+            var lab = removeAccents.remove(v.label.toLowerCase())
+            return lab.indexOf(needle) > -1
+          }
         )
       })
     },

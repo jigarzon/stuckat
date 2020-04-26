@@ -14,8 +14,8 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
       'i18n',
-      'axios',
       'load-config',
+      'axios',
       'vuex-persist',
       'validations',
       { path: 'vue-authenticate', server: false },

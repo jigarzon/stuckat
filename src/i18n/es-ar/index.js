@@ -29,6 +29,7 @@ export default {
   cancel: 'Cancelar',
   case: {
     myCases: 'Casos que reporté',
+    saved: 'Tu caso ha sido guardado',
     createText:
       'Completá por favor el siguiente formulario. Esta aplicación buscará conectarte con gente en tu situación para que Unidos puedan volver sanos y salvos a sus casas.',
     additionalInfo: 'Información adicional de tu situación',
@@ -42,6 +43,7 @@ export default {
         origin: 'Origen',
         originHint: 'Lugar dónde estás actualmente',
         destination: 'Destino',
+        stuckedPeopleCount: 'Cuántas personas son en tu grupo?',
         destinationHint: 'A dónde querés llegar',
         mobility: 'Tenés mobilidad propia?',
         additionalPlaces: 'Podés llevar a alguien más? Cuántos?',
@@ -59,6 +61,7 @@ export default {
       fields: {
         origin: 'Origen',
         originHint: 'Lugar dónde la persona actualmente',
+        stuckedPeopleCount: 'Cuántas personas son en el grupo?',
         destination: 'Destino',
         destinationHint: 'A dónde quiere llegar la persona',
         mobility: 'La persona tiene mobilidad propia?',
@@ -76,6 +79,7 @@ export default {
       fields: {
         origin: 'Origen',
         originHint: 'Lugar donde estabas varado',
+        stuckedPeopleCount: 'Cuántas personas eran?',
         destination: 'Destino',
         destinationHint: 'A dónde volví',
         mobility: 'Volviste en auto?',
@@ -99,6 +103,7 @@ export default {
       fields: {
         origin: 'Origen',
         originHint: 'Lugar donde estás/estabas varado',
+        stuckedPeopleCount: 'Cuántas personas eran?',
         destination: 'Destino',
         destinationHint: 'A dónde intentaste volver',
         mobility: 'Volviste en auto?',

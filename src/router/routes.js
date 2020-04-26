@@ -5,7 +5,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'my-case', component: () => import('pages/EditCase.vue') }
+      { path: 'my-case', component: () => import('pages/EditCase.vue') },
+      { path: 'my-case/saved', component: () => import('pages/CaseSaved.vue') }
     ]
   }
 ]

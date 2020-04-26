@@ -34,7 +34,12 @@ export default {
   },
   methods: {
     create (type) {
-      this.$router.push({ path: '/my-case', query: { type } })
+      if (this.$store.state.general.accessToken) {
+        this.$router.push({ path: '/my-case', query: { type } })
+      } else {
+        // this.$router.push({ path: '/my-case', query: { type } })
+        this.$root.$emit('loginRequested')
+      }
     }
   }
 }

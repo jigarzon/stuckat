@@ -26,11 +26,13 @@ export default {
   },
   home: 'Inicio',
   menu: 'Menú',
+  cancel: 'Cancelar',
   case: {
     myCases: 'Casos que reporté',
     createText:
       'Completá por favor el siguiente formulario. Esta aplicación buscará conectarte con gente en tu situación para que Unidos puedan volver sanos y salvos a sus casas.',
     additionalInfo: 'Información adicional de tu situación',
+    send: 'Enviar formulario',
     stuck: {
       title: 'Estoy varado/a',
       caption: 'Solo o con mi grupo familiar',
@@ -124,6 +126,7 @@ export default {
     text1: '2020'
   },
   vmsg: {
-    required: 'Por favor ingresá un valor'
+    required: 'Por favor ingresá un valor',
+    maxLength: 'Por favor ingresá hasta {0} caracteres'
   }
 }

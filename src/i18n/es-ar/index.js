@@ -28,7 +28,9 @@ export default {
   menu: 'Menú',
   case: {
     myCases: 'Casos que reporté',
-
+    createText:
+      'Completá por favor el siguiente formulario. Esta aplicación buscará conectarte con gente en tu situación para que Unidos puedan volver sanos y salvos a sus casas.',
+    additionalInfo: 'Información adicional de tu situación',
     stuck: {
       title: 'Estoy varado/a',
       caption: 'Solo o con mi grupo familiar',
@@ -75,12 +77,13 @@ export default {
         destination: 'Destino',
         destinationHint: 'A dónde volví',
         mobility: 'Volviste en auto?',
-        route: 'Podrías describir por dónde volviste? Rutas, caminos, etc',
+        route: 'Ruta/s por las que se circuló',
+        routeHint: 'Indicá por dónde volviste: Rutas, caminos, etc',
         permissions: 'Qué permisos/documentación llevaste?',
-        controls:
-          'Que controles en la ruta tuviste? (gendarmería, policía, etc)',
+        controls: 'Experiencia en controles camineros',
+        controlsHint: '(gendarmería, policía, etc)',
         economicalIssues:
-          'La situación te estaba trayendo problemas económicos?',
+          'La situación te estuvo / está trayendo problemas económicos?',
         healthIssues: 'Tuviste/tenés problemas de salud debido a la situación?',
         observations: 'Contá cualquier información adicional'
       }
@@ -97,12 +100,13 @@ export default {
         destination: 'Destino',
         destinationHint: 'A dónde intentaste volver',
         mobility: 'Volviste en auto?',
-        route: 'Podrías describir por dónde volviste? Rutas, caminos, etc',
+        route: 'Ruta/s por las que se circuló',
+        routeHint: 'Indicá por dónde volviste: Rutas, caminos, etc',
         permissions: 'Qué permisos/documentación llevaste?',
-        controls:
-          'Que controles en la ruta tuviste? (gendarmería, policía, etc)',
+        controls: 'Experiencia en controles camineros',
+        controlsHint: '(gendarmería, policía, etc)',
         economicalIssues:
-          'La situación te está o estaba trayendo problemas económicos?',
+          'La situación te estuvo / está trayendo problemas económicos?',
         healthIssues:
           'Tuviste / tenés problemas de salud debido a la situación?',
         observations: 'Contá cualquier información adicional'

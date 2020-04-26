@@ -1,0 +1,55 @@
+{
+  "name": "stuckat-server",
+  "version": "0.0.1",
+  "description": "Server for stuckat app",
+  "main": "dist",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "debug": "nodemon -w src --exec \"babel-node src --nolazy --inspect-brk=9229 --presets es2015,stage-0\"",
+    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "test": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jigarzon/stuckat.git"
+  },
+  "author": "Juan Ignacio Garzón",
+  "license": "BSD",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongodb": "^3.5.6",
+    "nested-object-assign": "^1.0.3",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-facebook-token": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-plugin-module-resolver": "^3.1.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.1.1",
+    "nodemon": "^1.18.9"
+  }
+}

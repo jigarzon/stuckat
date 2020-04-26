@@ -1,4 +1,4 @@
-var runConfig = require('./run_config.json')
+var runConfig = require('./public/run_config.json')
 var nestedAssign = require('nested-object-assign')
 var appConfig = JSON.parse(process.env.APP_CONFIG)
 var clientConfig = {}
@@ -17,9 +17,6 @@ module.exports.appConfig = serverConfig
 module.exports.runConfig = runConfig
 
 module.exports.handleConfigs = function ({ app }) {
-  app.get('/run_config.json', function (req, res) {
-    res.send(runConfig)
-  })
   app.get('/app_config.json', function (req, res) {
     res.send(clientConfig)
   })

@@ -37,23 +37,29 @@ export RUN_CONFIG
 help: ## This help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-build: publish-local-run-config ## Build the deployable image
+build: publish-local-run-config-server ## Build the deployable image
 	docker build --target "runner" -t $(APP_NAME) .
 
-build-nc: gen-dockerfile publish-local-run-config  ## Build the container without caching
+build-nc: gen-dockerfile publish-local-run-config-server  ## Build the container without caching
 	docker build --target "runner" --no-cache -t $(APP_NAME) .
 
-publish-local-run-config: ##Publishes the runConfig.json file on client (dev purposes)
-	@echo "$$RUN_CONFIG" > $(DIR)/src-ssr/run_config.json
+publish-local-run-config-server: ##Publishes the runConfig.json file on server (dev and building purposes)
+	@echo "$$RUN_CONFIG" > $(DIR)/src-server/src/public/run_config.json
 
-run-local: publish-local-run-config ## Run the local app in SSR mode (for dev purposes)
+publish-local-run-config-client: ##Publishes the runConfig.json file on client (dev purposes)
+	@echo "$$RUN_CONFIG" > $(DIR)/src/statics/run_config.json
+
+run-local-server: publish-local-run-config-server ## Run the backend server (for dev purposes)
 	@APP_CONFIG='$(shell cat $(DIR)/config_app.json)' \
-	quasar dev -m ssr
+	npm run --prefix src-server dev
+
+run-local-client: publish-local-run-config-client ## Run the frontend dev server with hot reload (for dev purposes)
+	npm run dev
 
 run: ## Run container (for dev purposes)
 	docker run -d --rm  \
+		--net=host \
 		-p 8989:8989 \
-		--env-file="$(DIR)/config_run.env" \
 		--env APP_CONFIG='$(shell cat $(DIR)/config_app.json)' \
 		--name="$(APP_NAME)" $(APP_NAME)
 

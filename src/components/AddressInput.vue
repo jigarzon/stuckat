@@ -1,26 +1,27 @@
 <template>
-  <div class="row q-col-gutter-sm">
-    <q-select class="col-12 col-sm-4" v-model="address.province"
-      :options="provinces" map-options emit-value use-input clearable
+  <div class="row q-col-gutter-x-sm">
+    <q-select class="col-12 col-sm-4" v-model="address.province" dense
+      :options="provinces" map-options emit-value use-input
       :rules="[$validations.required]" :label="$t('address.province')"
       @filter="filterProvince"></q-select>
-    <q-select class="col-12 col-sm-4" v-model="address.locality" map-options emit-value
-      clearable :rules="[$validations.required]" use-input
+    <q-select class="col-12 col-sm-4" v-model="address.locality" map-options dense
+      emit-value :rules="[$validations.required]" use-input
       :options="localities" :label="$t('address.locality')" input-debounce="500"
       @filter="filterLocality"></q-select>
-    <q-input class="col-12 col-sm-4" v-model="address.address"
+    <q-input class="col-12 col-sm-4" v-model="address.address" dense
       :label="$t('address.address')" :hint="$t('address.addressHint')"
       :placeholder="$t('address.addressPlaceholder')"
       :rules="[$validations.required]" @blur="completeLatLng()" />
     <q-no-ssr>
-      <q-dialog v-model="showAddressDialog">
-        <q-card style="max-width: 60vw">
+      <q-dialog v-model="showAddressDialog" :full-width="!$q.screen.gt.sm">
+        <q-card
+          :style="$q.screen.gt.sm ? {maxWidth: '60vw'} : {maxWidth: '100vw'}">
           <q-card-section
             class="bg-grey-4 text-grey-6 row no-wrap items-center">
             <q-avatar size="2em" icon="fa fa-map-marked" />
             <div class="text-subtitle">Elegí la ubicación correcta</div>
           </q-card-section>
-          <q-card-section  style="max-height: 50vh;" class="scroll">
+          <q-card-section style="max-height: 50vh;" class="scroll">
             <address-selector class="col" @input="setLocation($event)"
               :addresses="foundAddresses" />
           </q-card-section>
@@ -100,8 +101,12 @@ export default {
         })
         try {
           var completeAdr =
-            this.address.address + ', ' + this.address.locality +
-            ', ' + this.address.province.label + ', Argentina'
+            this.address.address +
+            ', ' +
+            this.address.locality +
+            ', ' +
+            this.address.province.label +
+            ', Argentina'
           var url =
             this.$config.osmUrl +
             '/search?format=json&q=' +

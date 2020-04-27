@@ -19,6 +19,11 @@ export default async ({ app, Vue }) => {
       return (
         val.length >= len || app.i18n.t('vmsg.minLength', { minLength: len })
       )
+    },
+    maxLength: len => val => {
+      return (
+        val.length <= len || app.i18n.t('vmsg.maxLength', { maxLength: len })
+      )
     }
   }
 }

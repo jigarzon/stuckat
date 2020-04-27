@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 var ObjectID = require('mongodb').ObjectID
 const stuckedRouter = require("express").Router();
-var db = require("../db");
 stuckedRouter.post("/cases", async (req, res) => {
   var Case = req.db.collection('Case')
   var caseInfo = req.body;

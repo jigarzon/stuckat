@@ -1,8 +1,7 @@
 <template>
   <q-page padding>
-    <h2 style="text-align: center;">Términos y Condiciones de
+    <h2 class="q-my-md">Términos y Condiciones de
       Uso</h2>
-    <p>&nbsp;</p>
     <p><strong>INFORMACIÓN RELEVANTE</strong></p>
     <p>Es requisito necesario para el uso de este sitio, que lea y acepte los
       siguientes Términos y

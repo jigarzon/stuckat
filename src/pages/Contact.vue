@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <h2>{{$t('contact.title')}}</h2>
+    <h2 class="q-my-md">{{$t('contact.title')}}</h2>
     <span v-html="$t('contact.text')"></span>
     <q-form style="max-width:500px" @submit="submit">
       <q-input class="q-pa-sm" :label="$t('name')" v-model="contactForm.name"

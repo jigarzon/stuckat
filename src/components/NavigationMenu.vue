@@ -44,7 +44,7 @@ export default {
     topItems () {
       return this.mockItems.filter(i => {
         var valid = rolesOk(this.roles, i.roles)
-
+        valid = valid && !i.onlyMobile
         valid = valid && !i.asUserSetting && (!i.loggedIn || this.user)
         return valid
       })
@@ -57,9 +57,7 @@ export default {
           key: 'admin.title',
           loggedIn: true,
           roles: ['admin'],
-          subitems: [
-
-          ]
+          subitems: []
         },
         {
           key: 'nearCases.lookup',
@@ -76,6 +74,13 @@ export default {
           icon: 'fas fa-envelope'
         },
         {
+          key: 'faq.title',
+          route: '/faq',
+          loggedIn: false,
+          clazz: '',
+          icon: 'fa fa-question-circle'
+        },
+        {
           key: 'case.myCases',
           route: '/cases',
           loggedIn: true,
@@ -83,7 +88,39 @@ export default {
           icon: 'map',
           asUserSetting: true
         },
-
+        {
+          key: 'separator1',
+          separator: true,
+          onlyMobile: true
+        },
+        {
+          key: 'footer.terms',
+          route: '/terms',
+          icon: 'fa fa-file-alt',
+          onlyMobile: true
+        },
+        {
+          key: 'footer.privacy',
+          route: '/privacy',
+          icon: 'fa fa-file-archive',
+          onlyMobile: true
+        },
+        {
+          key: 'separator2',
+          separator: true,
+          onlyMobile: true
+        },
+        {
+          key: 'githubProject',
+          link: 'https://github.com/jigarzon/stuckat',
+          icon: 'fab fa-github',
+          onlyMobile: true
+        },
+        {
+          key: 'separator3',
+          separator: true,
+          onlyMobile: true
+        },
         {
           key: 'user.closeSession',
           asUserSetting: true,
@@ -92,7 +129,6 @@ export default {
           action: () => this.$store.dispatch('general/logout'),
           icon: 'exit_to_app'
         }
-
       ]
     }
   },

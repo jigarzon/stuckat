@@ -10,7 +10,8 @@ const routes = [
       { path: 'nearby', component: () => import('pages/NearCases.vue') },
       { path: 'privacy', component: () => import('pages/Privacy.vue') },
       { path: 'terms', component: () => import('pages/Terms.vue') },
-      { path: 'contact', component: () => import('pages/Contact.vue') }
+      { path: 'contact', component: () => import('pages/Contact.vue') },
+      { path: 'faq', component: () => import('pages/FAQ.vue') }
     ]
   }
 ]

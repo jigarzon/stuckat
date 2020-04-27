@@ -16,9 +16,9 @@ module.exports = function (/* ctx */) {
       'i18n',
       'load-config',
       'axios',
-      'vuex-persist',
       'validations',
       { path: 'vue-authenticate', server: false },
+      'vuex-persist',
       { path: 'client-components', server: false }
     ],
 

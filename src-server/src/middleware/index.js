@@ -1,7 +1,9 @@
-module.exports = function ({ config }) {
-  const routes = require('express').Router()
+var tokenVerify = require("./tokenVerify");
+var facebookAuth = require("./facebookAuth");
+module.exports = function({ config }) {
+  const routes = require("express").Router();
 
-  // add middleware here
-  // routes.use('/api', tokenVerify({ config }))
-  return routes
-}
+  routes.use("/api", tokenVerify({ config }));
+  routes.use("/auth/facebook/callback", facebookAuth({ config }));
+  return routes;
+};

@@ -1,7 +1,7 @@
 import http from 'http'
 import express from 'express'
 import cors from 'cors';
-
+var compression = require('compression')
 import bodyParser from 'body-parser'
 var extension = require('./extension')
 
@@ -38,6 +38,7 @@ const staticFileMiddleware = express.static(path.join(__dirname, 'public'))
 extension.extendApp({ app })
 // static middleware
 app.use(staticFileMiddleware)
+app.use(compression())
 // allow vue.js routing (everything not covered in previous middlewares
 // will be handled by index.html)
 app.use('*', function (req, res) {

@@ -15,7 +15,7 @@ module.exports = function({ config }) {
         if (err) {
           return res.status(401).send("Invalid token");
         } else {
-          req.user = decoded;
+          req.user = decoded.user;
           next();
         }
       });

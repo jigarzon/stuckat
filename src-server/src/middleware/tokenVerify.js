@@ -1,26 +1,30 @@
 // THIS CLASS IS NOT BEING USED AND IS HERE AS AN EXAMPLE
-const appConfig = require('../configs').appConfig
+const appConfig = require("../configs").appConfig;
 var jwt = require("jsonwebtoken");
 
 module.exports = function({ config }) {
-  var key = appConfig.keyphrase
+  var key = appConfig.keyphrase;
   return async (req, res, next) => {
     const token = req.headers["access-token"];
-    // if (req.path === '/log' || (req.path.startsWith('/rfps') && req.method === 'GET')) {
-      //   next()
-      //   return
-      // }
+    
+    var publicRoute = false;
+    if (req.path === "/api/contact") {
+      publicRoute = true;
+    }
+    
     if (token) {
       jwt.verify(token, key, (err, decoded) => {
-        if (err) {
+        if (err && !publicRoute) {
           return res.status(401).send("Invalid token");
         } else {
           req.user = decoded.user;
           next();
         }
       });
-    } else {
+    } else if (!publicRoute) {
       res.status(401).send("No token in header");
+    } else {
+      next()
     }
   };
 };

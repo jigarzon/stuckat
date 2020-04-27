@@ -7,7 +7,10 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'my-case', component: () => import('pages/EditCase.vue') },
       { path: 'my-case/saved', component: () => import('pages/CaseSaved.vue') },
-      { path: 'privacy', component: () => import('pages/Privacy.vue') }
+      { path: 'nearby', component: () => import('pages/NearCases.vue') },
+      { path: 'privacy', component: () => import('pages/Privacy.vue') },
+      { path: 'terms', component: () => import('pages/Terms.vue') },
+      { path: 'contact', component: () => import('pages/Contact.vue') }
     ]
   }
 ]

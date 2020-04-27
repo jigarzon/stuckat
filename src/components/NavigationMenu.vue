@@ -62,11 +62,18 @@ export default {
           ]
         },
         {
-          key: 'searchNearby.label',
-          route: '/cases',
+          key: 'nearCases.lookup',
+          route: '/nearby',
           loggedIn: true,
           clazz: '',
           icon: 'person_pin'
+        },
+        {
+          key: 'contact.title',
+          route: '/contact',
+          loggedIn: false,
+          clazz: '',
+          icon: 'fas fa-envelope'
         },
         {
           key: 'case.myCases',

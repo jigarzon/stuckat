@@ -6,9 +6,6 @@ export default {
   ok: 'Ok',
   accept: 'Acepto',
   cookiesText: 'Este sitio web usa cookies, si permaneces aquí, aceptas su uso. Puedes leer más sobre el uso de cookies en nuestra <a href="privacy">política de privacidad</a>',
-  searchNearby: {
-    label: 'Buscar gente cerca'
-  },
   general: {
     slogan: 'Queremos volver a casa'
   },
@@ -31,6 +28,19 @@ export default {
   cancel: 'Cancelar',
   phone: 'Teléfono',
   email: 'E-mail',
+  send: 'Enviar',
+  name: 'Nombre',
+  message: 'Mensaje',
+  contact: {
+    title: 'Contacto',
+    text: 'Formulario de contacto. Intentaremos leer todos los mensajes. <b>Por favor no escribas aquí tu caso, para eso, utiliza el <a href="/">Formulario inicial</a>. Gracias!',
+    thanks: 'Gracias por escribirnos. Contestaremos a la mayor brevedad posible.'
+  },
+  nearCases: {
+    title: 'Buscar casos cercanos',
+    text: 'Estamos construyendo esta sección. En los próximos días estará disponible.',
+    lookup: 'Buscar gente cerca'
+  },
   case: {
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
@@ -141,7 +151,7 @@ export default {
   },
   vmsg: {
     required: 'Por favor ingresá un valor',
-    maxLength: 'Por favor ingresá hasta {0} caracteres',
+    maxLength: 'Por favor ingresá hasta {maxLength} caracteres',
     phone: 'Ingresá un teléfono válido por favor',
     email: 'Ingresa un email válido'
   }

@@ -1,29 +1,26 @@
-
 // THIS CLASS IS NOT BEING USED AND IS HERE AS AN EXAMPLE
+const appConfig = require('../configs').appConfig
+var jwt = require("jsonwebtoken");
 
-module.exports = function ({ config }) {
+module.exports = function({ config }) {
+  var key = appConfig.keyphrase
   return async (req, res, next) => {
-  // delete from here: /stack (it should be authed)
+    const token = req.headers["access-token"];
     // if (req.path === '/log' || (req.path.startsWith('/rfps') && req.method === 'GET')) {
-    //   next()
-    //   return
-    // }
-    // var token = req.headers['x-shortlink']
-    // if (token) {
-    //   try {
-    //     var info = await getShortlinkInfo(token)
-
-    //     req.oid = info.organizationId
-    //     next()
-    //   } catch (e) {
-    //     res.status(401).json({
-    //       result: 'invalid token'
-    //     })
-    //   }
-    // } else {
-    //   res.status(401).json({
-    //     result: 'no token present in header'
-    //   })
-    // }
-  }
-}
+      //   next()
+      //   return
+      // }
+    if (token) {
+      jwt.verify(token, key, (err, decoded) => {
+        if (err) {
+          return res.status(401).send("Invalid token");
+        } else {
+          req.user = decoded;
+          next();
+        }
+      });
+    } else {
+      res.status(401).send("No token in header");
+    }
+  };
+};

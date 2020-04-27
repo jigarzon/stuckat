@@ -17,13 +17,16 @@ export default async ({ ssrContext, store, Vue }) => {
   const vuexCookie = new VuexPersistence({
     restoreState: (key) => {
       var data = cookies.get(key)
-      if (Vue.prototype.$auth && data && data.user && data.user.token) {
-        Vue.prototype.$auth.setToken({ access_token: data.user.token })
+      console.log('restoring')
+      if (Vue.prototype.$auth && data && data.general && data.general.accessToken) {
+        console.log('setting token', data.general.accessToken)
+        Vue.prototype.$auth.setToken({ access_token: data.general.accessToken })
       }
       return data
     },
     key: 'stuckat',
     saveState: (key, state) => {
+      console.log('saving state', JSON.stringify(state))
       cookies.set(key, state, { path: '/' })
     },
     modules: ['general'], // only save user module

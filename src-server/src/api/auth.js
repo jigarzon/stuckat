@@ -1,17 +1,13 @@
-const authRouter = require('express').Router()
+const authRouter = require("express").Router();
+var db = require("../db");
 
-authRouter.post('/login', (req, res) => {
-  setTimeout(() => {
-    try {
-      if (req.body.facebookToken) {
-        res.json({ token: '1234' })
-      } else {
-        res.status(401).send('invalid token')
-      }
-    } catch (e) {
-      console.error('error val token', e)
-      res.status(500).send(e)
-    }
-  }, 2000)
-})
-module.exports = authRouter
+authRouter.post("/contactInfo", async (req, res) => { 
+  var User = req.db.collection('User')
+  var result = await User.findOneAndUpdate(
+    { id: req.user.id },
+    { $set: { contactInfo: req.body } },
+    { upsert: false }
+  );
+  res.status(200).send("ok");
+});
+module.exports = authRouter;

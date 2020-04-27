@@ -66,6 +66,28 @@
         </q-card-section>
       </q-card>
     </div>
+    <div class="col-12 q-pa-sm">
+      <q-card class="full-size">
+        <q-card-section>
+          <div class="text-h6">{{$t('case.myContactInfo')}}</div>
+        </q-card-section>
+        <q-card-section class="row">
+          <q-toggle
+            :label="$t('case.allowContactByPhone')"
+            v-model="contactInfo.allowContactByPhone" />
+          <phone-input class="q-pa-sm"
+            v-show="contactInfo.allowContactByPhone"
+            v-model="contactInfo.phone" />
+          <q-separator class="col-12"/>
+          <q-toggle
+            :label="$t('case.allowContactByEMail')"
+            v-model="contactInfo.allowContactByEMail" />
+          <q-input dense class="q-pa-sm"
+            v-if="contactInfo.allowContactByEMail" :label="$t('email')"
+            v-model="contactInfo.email" :rules="[$validations.email]" />
+        </q-card-section>
+      </q-card>
+    </div>
     <div class="row q-pa-sm justify-end full-width">
       <q-btn type="submit" flat no-caps :label="$t('cancel')">
       </q-btn>
@@ -78,12 +100,14 @@
 
 <script>
 import AddressInput from 'components/AddressInput'
+import PhoneInput from 'components/PhoneInput'
 export default {
   props: {
     type: String
   },
   components: {
-    AddressInput
+    AddressInput,
+    PhoneInput
   },
   mounted () {
     var tempCase = this.$q.localStorage.getItem('tempCase')
@@ -104,6 +128,7 @@ export default {
     async save () {
       try {
         await this.$axios.post('/api/cases', this.currentCase)
+        await this.$axios.post('/api/contactInfo', this.contactInfo)
         this.$router.push('/my-case/saved')
       } catch (e) {
         var msg = e && e.response && e.response.statusText
@@ -137,6 +162,12 @@ export default {
         economicalIssues: false,
         healthIssues: false,
         observations: ''
+      },
+      contactInfo: {
+        allowContactByPhone: false,
+        phone: '',
+        allowContactByEMail: false,
+        email: ''
       }
     }
   }

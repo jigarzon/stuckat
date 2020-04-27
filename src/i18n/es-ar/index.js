@@ -4,6 +4,8 @@
 export default {
   brand: 'Estamos Varados!',
   ok: 'Ok',
+  accept: 'Acepto',
+  cookiesText: 'Este sitio web usa cookies, si permaneces aquí, aceptas su uso. Puedes leer más sobre el uso de cookies en nuestra <a href="privacy">política de privacidad</a>',
   searchNearby: {
     label: 'Buscar gente cerca'
   },
@@ -27,13 +29,20 @@ export default {
   home: 'Inicio',
   menu: 'Menú',
   cancel: 'Cancelar',
+  phone: 'Teléfono',
+  email: 'E-mail',
   case: {
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
+    savedText1: '¿Cómo sigo?',
+    savedText2: 'Ahora que tu caso está cargado, el sistema intentará buscar situaciones similares a la tuya con el fin de unirte.',
     createText:
       'Completá por favor el siguiente formulario. Esta aplicación buscará conectarte con gente en tu situación para que Unidos puedan volver sanos y salvos a sus casas.',
     additionalInfo: 'Información adicional de tu situación',
     send: 'Enviar formulario',
+    myContactInfo: 'Mi información de contacto',
+    allowContactByPhone: 'Permitir que me contacten por teléfono / whatsapp?',
+    allowContactByEMail: 'Permitir que me contacten por mail?',
     stuck: {
       title: 'Estoy varado/a',
       caption: 'Solo o con mi grupo familiar',
@@ -132,6 +141,8 @@ export default {
   },
   vmsg: {
     required: 'Por favor ingresá un valor',
-    maxLength: 'Por favor ingresá hasta {0} caracteres'
+    maxLength: 'Por favor ingresá hasta {0} caracteres',
+    phone: 'Ingresá un teléfono válido por favor',
+    email: 'Ingresa un email válido'
   }
 }

@@ -1,16 +1,16 @@
 const configs = require('./configs')
 const apiRoutes = require('./api')
 var express = require('express')
+var db = require('./db')
 var middleware = require('./middleware')
-const auth = require('./auth')
 if (process.env.NODE_ENV === 'development') {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 }
 module.exports.extendApp = function (context) {
   context.app.use(express.json())
-  context.app.use(middleware(configs.appConfig))
   configs.handleConfigs(context)
-  auth.handleAuth(context)
+  db.handleDatabase(context)
+  context.app.use(middleware(configs.appConfig))
   context.app.use('/api', apiRoutes)
 }
 process.on('unhandledRejection', (error, promise) => {

@@ -4,9 +4,9 @@ export default ({ Vue, store }) => {
   $axios.interceptors.request.use((config) => {
     const token = store.state.general.accessToken
     if (token) {
-      config.headers.Authorization = 'Bearer ' + token
+      config.headers['access-token'] = token
     } else if (Vue.prototype.$auth && Vue.prototype.$auth.getToken()) {
-      config.headers.Authorization = 'Bearer ' + Vue.prototype.$auth.getToken()
+      config.headers['access-token'] = Vue.prototype.$auth.getToken()
     }
 
     return config

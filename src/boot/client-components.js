@@ -1,8 +1,11 @@
 import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet'
 import { Icon, latLng, latLngBounds } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import VueTelInput from 'vue-tel-input'
 
 export default ({ Vue }) => {
+  Vue.use(VueTelInput)
+
   Vue.component('l-map', LMap)
   Vue.component('l-tile-layer', LTileLayer)
   Vue.component('l-marker', LMarker)

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default async ({ Vue, store }) => {
   var hostname = process.env.API_HOST || window.location.hostname
-  var port = process.env.API_PORT || 8989
+  var port = process.env.API_PORT || window.location.port
   const host = window.location.protocol + '//' + hostname + ':' + port
 
   // if (ssrContext && ssrContext.req) {

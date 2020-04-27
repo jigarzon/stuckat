@@ -47,6 +47,8 @@
         <router-link class="q-px-sm" to="/terms">{{$t('footer.terms')}}</router-link>
         <router-link to="/privacy">{{$t('footer.privacy')}}</router-link>
         <a href="https://github.com/jigarzon/stuckat"><q-icon name="fab fa-github" /> {{$t('githubProject')}}</a>
+        <q-space />
+        <span><b>v</b>{{$runConfig.app_version}}</span>
       </q-toolbar>
     </q-footer>
     <q-dialog v-model="cookiesDialog" seamless position="bottom" full-width>

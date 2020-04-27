@@ -13,13 +13,14 @@ export default async ({ Vue, store }) => {
   // } else {
   //   host = window.location.protocol + '//' + window.location.host
   // }
-  var url = host + '/app_config.json'
   try {
-    var config = await axios.get(url)
+    var config = await axios.get(host + '/app_config.json')
+    var runConfig = await axios.get(host + '/run_config.json')
   } catch (e) {
-    console.error('Unable to load config at ' + url)
+    console.error('Unable to load config at ' + host + '/app_config.json')
     throw e
   }
   Vue.prototype.$config = config.data
+  Vue.prototype.$runConfig = runConfig.data
   store.$config = config.data
 }

@@ -5,7 +5,8 @@ export default {
   brand: 'Estamos Varados!',
   ok: 'Ok',
   accept: 'Acepto',
-  cookiesText: 'Este sitio web usa cookies, si permaneces aquí, aceptas su uso. Puedes leer más sobre el uso de cookies en nuestra <a href="privacy">política de privacidad</a>',
+  cookiesText:
+    'Este sitio web usa cookies, si permaneces aquí, aceptas su uso. Puedes leer más sobre el uso de cookies en nuestra <a href="privacy">política de privacidad</a>',
   general: {
     slogan: 'Queremos volver a casa'
   },
@@ -33,19 +34,23 @@ export default {
   message: 'Mensaje',
   contact: {
     title: 'Contacto',
-    text: 'Formulario de contacto. Intentaremos leer todos los mensajes. <b>Por favor no escribas aquí tu caso, para eso, utiliza el <a href="/">Formulario inicial</a>. Gracias!',
-    thanks: 'Gracias por escribirnos. Contestaremos a la mayor brevedad posible.'
+    text:
+      'Formulario de contacto. Intentaremos leer todos los mensajes. <b>Por favor no escribas aquí tu caso, para eso, utiliza el <a href="/">Formulario inicial</a>. Gracias!',
+    thanks:
+      'Gracias por escribirnos. Contestaremos a la mayor brevedad posible.'
   },
   nearCases: {
     title: 'Buscar casos cercanos',
-    text: 'Estamos construyendo esta sección. En los próximos días estará disponible.',
+    text:
+      'Estamos construyendo esta sección. En los próximos días estará disponible.',
     lookup: 'Buscar gente cerca'
   },
   case: {
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
     savedText1: '¿Cómo sigo?',
-    savedText2: 'Ahora que tu caso está cargado, el sistema intentará buscar situaciones similares a la tuya con el fin de unirte.',
+    savedText2:
+      'Ahora que tu caso está cargado, el sistema intentará buscar situaciones similares a la tuya con el fin de unirte.',
     createText:
       'Completá por favor el siguiente formulario. Esta aplicación buscará conectarte con gente en tu situación para que Unidos puedan volver sanos y salvos a sus casas.',
     additionalInfo: 'Información adicional de tu situación',
@@ -139,6 +144,7 @@ export default {
       }
     }
   },
+  githubProject: 'Proyecto github',
   landing: {
     text1: 'Varados en Argentina',
     text2:
@@ -147,12 +153,40 @@ export default {
       'Para que esta iniciativa funcione, es necesario que <b>ingreses tu caso</b>:'
   },
   footer: {
-    text1: '2020'
+    text1: '2020',
+    text2: 'Licenciado en los términos BSD',
+    terms: 'Términos y condiciones',
+    privacy: 'Política de privacidad'
   },
   vmsg: {
     required: 'Por favor ingresá un valor',
     maxLength: 'Por favor ingresá hasta {maxLength} caracteres',
     phone: 'Ingresá un teléfono válido por favor',
     email: 'Ingresa un email válido'
+  },
+  faq: {
+    title: 'Preguntas frecuentes',
+    list: [
+      {
+        title: '¿Por qué existe este sitio?',
+        text:
+          'Desde que se instauró la restricción de circulación, un número elevado de personas (en Argentina más de 20.000) quedaron varados, lejos de sus casas y con imposibilidad de regresar. El Estado no ha brindado solución a los problemas ocasionados por la medida extrema de aislamiento adoptada.'
+      },
+      {
+        title: '¿Este sitio es gubernamental?',
+        text:
+          'Este sitio es una iniciativa sin fines de lucro generada dentro de la comunidad de varados. No responde a ningún partido político ni recibe ningún tipo de subsidio'
+      },
+      {
+        title: '¿Puedo colaborar con el mismo?',
+        text:
+          "Si, en caso de querer colaborar, te pido por favor lo hagas mediante el formulario <a href='/contact'>de contacto</a>."
+      },
+      {
+        title: '¿Quién financia este sitio?',
+        text:
+          "Este sitio esta enteramente mantenido por su creador, un miembro de la comunidad de varados. Se aceptan donaciones, en caso de querer hacerlo, te pido lo hagas mediante el formulario <a href='/contact'>de contacto</a>. "
+      }
+    ]
   }
 }

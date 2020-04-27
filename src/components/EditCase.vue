@@ -89,7 +89,7 @@
       </q-card>
     </div>
     <div class="row q-pa-sm justify-end full-width">
-      <q-btn type="submit" flat no-caps :label="$t('cancel')">
+      <q-btn @click="$router.back()" flat no-caps :label="$t('cancel')">
       </q-btn>
       <q-btn type="submit" color="positive" no-caps push
         :label="$t('case.send')">

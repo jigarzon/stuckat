@@ -1,7 +1,7 @@
 <template>
   <div>
-    <q-item v-if="!item.subitems" v-ripple class="relative-position" clickable
-      @click="executeAction">
+    <q-item v-if="!item.subitems && !item.separator" v-ripple
+      class="relative-position" clickable @click="executeAction">
       <q-item-section avatar v-if="item.icon">
         <q-icon color="primary" :name="item.icon" />
       </q-item-section>
@@ -9,6 +9,9 @@
         {{ $t(item.key) }}
       </q-item-section>
     </q-item>
+    <div v-else-if="item.separator">
+      <q-separator />
+    </div>
     <q-expansion-item v-else :label="$t(item.key)">
       <sidebar-menu-item v-for="child in item.subitems" :key="child.key"
         :color="color" :item="child" :itemlist="itemlist" />
@@ -16,6 +19,7 @@
   </div>
 </template>
 <script>
+import { openURL } from 'quasar'
 export default {
   name: 'SidebarMenuItem',
   props: {
@@ -42,6 +46,8 @@ export default {
         this.item.action()
       } else if (this.item.route) {
         this.$router.push(this.item.route)
+      } else if (this.item.link) {
+        openURL(this.item.link)
       }
     },
     toggle () {

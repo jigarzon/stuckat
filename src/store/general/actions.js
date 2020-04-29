@@ -6,6 +6,14 @@ export async function socialAuth ({ commit, dispatch }, provider) {
       userData = await this.$axios.get('/auth/facebook/callback', {
         params: { access_token: resp.access_token }
       })
+      commit('setAccessToken', userData.data.accessToken)
+      delete userData.data.accessToken
+      commit('setUser', userData.data.user)
+      break
+    case 'google':
+      userData = await this.$axios.get('/auth/google/callback', {
+        params: { access_token: resp.access_token }
+      })
       console.log('response user data', JSON.stringify(userData.data))
       commit('setAccessToken', userData.data.accessToken)
       delete userData.data.accessToken

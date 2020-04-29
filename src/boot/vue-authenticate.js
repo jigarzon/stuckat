@@ -7,7 +7,13 @@ export default async ({ app, router, Vue, store }) => {
       facebook: {
         clientId: config.auth.facebook.clientId,
         responseType: 'token',
+        url: '/auth/facebook/callback',
         authorizationEndpoint: config.auth.facebook.endpoint
+      },
+      google: {
+        clientId: config.auth.google.clientId,
+        url: '/auth/google/callback',
+        responseType: 'token'
       }
     }
   }

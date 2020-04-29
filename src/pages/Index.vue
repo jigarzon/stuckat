@@ -21,16 +21,19 @@
           @click="create('negativeExperience')" />
       </div>
     </div>
+    <cases-map />
   </q-page>
 </template>
 
 <script>
 import StuckButton from 'components/StuckButton'
+import CasesMap from 'components/CasesMap'
 export default {
   name: 'PageIndex',
   mounted () {},
   components: {
-    StuckButton
+    StuckButton,
+    CasesMap
   },
   methods: {
     create (type) {

@@ -134,7 +134,9 @@ export default {
     currentCase: {
       handler (c) {
         // prevent form loose
-        this.$q.localStorage.set('tempCase', c)
+        var data = Object.assign({}, c)
+        delete data._id
+        this.$q.localStorage.set('tempCase', data)
       },
       deep: true
     }
@@ -142,6 +144,7 @@ export default {
   methods: {
     async save () {
       try {
+        console.log('saving', this.currentCase)
         await this.$axios.post('/api/cases', this.currentCase)
         await this.$axios.post('/api/contactInfo', this.contactInfo)
         this.$router.push('/my-case/saved')

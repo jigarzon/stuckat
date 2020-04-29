@@ -1,8 +1,6 @@
 <template>
 
-  <div>
-    {{data}}
-
+  <div class="shadow-5" style="overflow:hidden; border-radius: 20px">
     <l-map :zoom="zoom" :center="center" style="height: 500px; width: 100%">
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-geo-json :geojson="geoJSON" :optionsStyle="geoStyle" />
@@ -22,12 +20,15 @@ export default {
 
     LGeoJson
   },
+  props: {
+    mode: String
+  },
   mounted () {
     this.retrieve()
   },
   data () {
     return {
-      zoom: 7,
+      zoom: 4,
       data: [],
       geoStyle: {
         color: '#ff7800',
@@ -43,9 +44,9 @@ export default {
   },
   computed: {
     geoJSON () {
-      return {
-        type: 'FeatureCollection',
-        features: this.data.map(item => ({
+      var items
+      if (this.mode === 'lines') {
+        items = this.data.map(item => ({
           type: 'Feature',
           geometry: {
             type: 'LineString',
@@ -55,79 +56,35 @@ export default {
             ]
           }
         }))
+      } else {
+        items = this.data.reduce((items, item) => {
+          items.push({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [item.o.lng, item.o.lat]
+            }
+          })
+          items.push({
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [item.d.lng, item.d.lat]
+            }
+          })
+          return items
+        }, [])
+      }
+      return {
+        type: 'FeatureCollection',
+        features: items
       }
     }
   },
   methods: {
-    async findLocation (location) {
-      if (!location || !location.province || !location.locality) {
-        return null
-      }
-      try {
-        var url =
-          this.$config.geoApiUrl +
-          '/localidades?campos=id,nombre,centroide&provincia=' +
-          encodeURIComponent(location.province.id) +
-          '&nombre=' +
-          encodeURIComponent(location.locality)
-        const res = await this.$axios.get(url)
-
-        if (res.data && res.data.localidades.length >= 1) {
-          var item = res.data.localidades[0]
-          return {
-            lat: item.centroide.lat,
-            lng: item.centroide.lon
-          }
-        }
-      } catch (e) {
-        console.error('error retrieving lat lon', e)
-        return null
-      }
-    },
     async retrieve () {
-      var resp = await this.$axios.get('/api/cases/all')
-      var items = await resp.data.cases.reduce(async (arr, currentCase) => {
-        var targetArray = await arr
-        var origin = currentCase.origin && currentCase.origin.location
-        var destination =
-          currentCase.destination && currentCase.destination.location
-        if (!origin) {
-          origin = await this.findLocation(currentCase.origin)
-        }
-        if (!destination) {
-          destination = await this.findLocation(currentCase.destination)
-        }
-        if (origin && destination) {
-          // var rnd = Math.random() * 0.01
-          var a, b, c, d
-          a = parseFloat(origin.lng)
-          b = parseFloat(origin.lat)
-          c = parseFloat(destination.lng)
-          d = parseFloat(destination.lat)
-          if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
-            return targetArray
-          } else {
-            // var item = {
-            //   type: 'Feature',
-            //   geometry: {
-            //     type: 'LineString',
-            //     coordinates: [
-            //       [a + rnd, b + rnd],
-            //       [c + rnd, d + rnd]
-            //     ]
-            //   }
-            // }
-            var item = {
-              id: currentCase._id,
-              o: { lat: b, lng: a },
-              d: { lat: d, lng: c }
-            }
-            targetArray.push(item)
-          }
-        }
-        return targetArray
-      }, [])
-      this.data = items
+      var resp = await this.$axios.get('/mapdata.json')
+      this.data = resp.data
     }
   }
 }

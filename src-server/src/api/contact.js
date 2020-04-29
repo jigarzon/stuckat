@@ -30,7 +30,7 @@ router.delete("/contact/:id", async (req, res) => {
   }
   var Contact = req.db.collection('Contact')
   console.log("deleting contact msg", req.params.id)
-  var result = await Contact.remove({_id: ObjectID(req.params.id)});
+  var result = await Contact.deleteOne({_id: ObjectID(req.params.id)});
   res.send({ result: "OK" });
 });
 module.exports = router;

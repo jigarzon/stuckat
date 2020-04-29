@@ -8,7 +8,7 @@ import { Quasar } from 'quasar'
 export function rolesOk (userRoles, requiredRoles) {
   if (!requiredRoles || requiredRoles.length === 0) return true
   if (!userRoles || userRoles.length === 0) return false
-  return requiredRoles.some(role => userRoles[role])
+  return requiredRoles.some(role => userRoles.indexOf(role) >= 0)
 }
 export function parseNumber (value, locale) {
   if (!value) return null

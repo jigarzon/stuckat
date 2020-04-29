@@ -1,14 +1,14 @@
 <template>
   <div class="row q-col-gutter-x-sm">
     <q-select class="col-12 col-sm-4" v-model="address.province" dense
-      :options="provinces" map-options emit-value use-input
+      :options="provinces" map-options emit-value use-input :readonly="readonly"
       :rules="[$validations.required]" :label="$t('address.province')"
       @filter="filterProvince"></q-select>
     <q-select class="col-12 col-sm-4" v-model="address.locality" map-options dense
-      emit-value :rules="[$validations.required]" use-input clearable
+      emit-value :rules="[$validations.required]" use-input clearable :readonly="readonly"
       :options="localities" :label="$t('address.locality')" input-debounce="500"
       @filter="filterLocality"></q-select>
-    <q-input class="col-12 col-sm-4" v-model="address.address" dense
+    <q-input class="col-12 col-sm-4" v-model="address.address" dense :readonly="readonly"
       :label="$t('address.address')" :hint="$t('address.addressHint')"
       :placeholder="$t('address.addressPlaceholder')"
       :rules="[$validations.required]" @blur="completeLatLng()" />
@@ -29,7 +29,7 @@
           <q-card-section>
             <q-separator />
             <q-btn color="primary" class="q-ma-sm" :label="$t('ok')"
-              :disabled="!address.location" v-close-popup />
+              :disable="!address.location" v-close-popup />
           </q-card-section>
         </q-card>
       </q-dialog>
@@ -44,7 +44,8 @@ export default {
     AddressSelector: () => import('components/AddressSelector')
   },
   props: {
-    value: Object
+    value: Object,
+    readonly: Boolean
   },
   watch: {
     value (v) {

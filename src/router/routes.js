@@ -11,7 +11,9 @@ const routes = [
       { path: 'privacy', component: () => import('pages/Privacy.vue') },
       { path: 'terms', component: () => import('pages/Terms.vue') },
       { path: 'contact', component: () => import('pages/Contact.vue') },
-      { path: 'faq', component: () => import('pages/FAQ.vue') }
+      { path: 'faq', component: () => import('pages/FAQ.vue') },
+      { path: 'admin/cases', component: () => import('pages/admin/Cases.vue') },
+      { path: 'admin/cases/:id', component: () => import('pages/admin/Case.vue') }
     ]
   }
 ]

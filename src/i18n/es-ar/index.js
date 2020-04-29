@@ -31,7 +31,12 @@ export default {
   email: 'E-mail',
   send: 'Enviar',
   name: 'Nombre',
+  admin: 'Administración',
   message: 'Mensaje',
+  type: 'Tipo',
+  createdAt: 'Fecha carga',
+  mobility: 'Movilidad',
+  back: 'Volver',
   contact: {
     title: 'Contacto',
     text:
@@ -46,6 +51,7 @@ export default {
     lookup: 'Buscar gente cerca'
   },
   case: {
+    list: 'Lista de casos',
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
     savedText1: '¿Cómo sigo?',
@@ -69,7 +75,7 @@ export default {
         destination: 'Destino',
         stuckedPeopleCount: 'Cuántas personas son en tu grupo?',
         destinationHint: 'A dónde querés llegar',
-        mobility: 'Tenés mobilidad propia?',
+        mobility: 'Tenés movilidad propia?',
         additionalPlaces: 'Podés llevar a alguien más? Cuántos?',
         economicalIssues: 'Estás en una emergencia económica?',
         healthIssues: 'Tenés problemas de salud?',
@@ -88,7 +94,7 @@ export default {
         stuckedPeopleCount: 'Cuántas personas son en el grupo?',
         destination: 'Destino',
         destinationHint: 'A dónde quiere llegar la persona',
-        mobility: 'La persona tiene mobilidad propia?',
+        mobility: 'La persona tiene movilidad propia?',
         additionalPlaces: 'La persona puede llevar a alguien más? Cuántos?',
         economicalIssues: 'Tu familiar/amigo está en una emergencia económica?',
         healthIssues: 'Tiene problemas de salud?',

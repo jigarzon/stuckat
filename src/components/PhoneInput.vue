@@ -1,5 +1,5 @@
 <template>
-  <q-field :label="$t('phone')" stack-label dense
+  <q-field :label="$t('phone')" stack-label dense :disable="disable"
    :error="!valid && !!value" :error-message="$t('vmsg.phone')" :value="value">
     <template v-slot:control>
       <vue-tel-input :value="value" @input="$emit('input', $event)" class="phone-input"
@@ -14,7 +14,8 @@
 export default {
   props: {
     label: String,
-    value: String
+    value: String,
+    disable: Boolean
   },
   methods: {
     phoneValidate (res) {

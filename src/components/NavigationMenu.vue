@@ -36,7 +36,11 @@ export default {
       })
     },
     roles: function () {
-      return []
+      if (this.user && this.user.isAdmin) {
+        return ['admin']
+      } else {
+        return []
+      }
     },
     user: function () {
       return this.$store.state.general.user
@@ -54,10 +58,19 @@ export default {
     return {
       mockItems: [
         {
-          key: 'admin.title',
+          key: 'admin',
           loggedIn: true,
+          icon: 'fa fa-key',
           roles: ['admin'],
-          subitems: []
+          subitems: [
+            {
+              key: 'case.list',
+              route: '/admin/cases',
+              loggedIn: true,
+              roles: ['admin'],
+              icon: 'fa fa-users'
+            }
+          ]
         },
         {
           key: 'nearCases.lookup',

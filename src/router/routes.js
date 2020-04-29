@@ -14,7 +14,8 @@ const routes = [
       { path: 'faq', component: () => import('pages/FAQ.vue') },
       { path: 'admin/cases', component: () => import('pages/admin/Cases.vue') },
       { path: 'admin/contact-messages', component: () => import('pages/admin/ContactMessages.vue') },
-      { path: 'admin/cases/:id', component: () => import('pages/admin/Case.vue') }
+      { path: 'admin/cases/:id', component: () => import('pages/admin/Case.vue') },
+      { path: 'admin/cases-data-gen', component: () => import('pages/admin/GenerateCasesData.vue') }
     ]
   }
 ]

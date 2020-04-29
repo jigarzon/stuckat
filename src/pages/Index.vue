@@ -21,18 +21,35 @@
           @click="create('negativeExperience')" />
       </div>
     </div>
+    <h5 class="q-mb-sm">{{$t('case.map')}}</h5>
+    <div class="text-subtitle">{{$t('case.mapText-' + mode)}}
+      <q-btn @click="switchMode" no-caps dense class="q-ma-sm"
+        :label="$t(mode === 'lines' ? 'case.show-circles' : 'case.show-lines')">
+      </q-btn>
+    </div>
+    <cases-map :mode="mode" />
   </q-page>
 </template>
 
 <script>
 import StuckButton from 'components/StuckButton'
+import CasesMap from 'components/CasesMap'
 export default {
   name: 'PageIndex',
   mounted () {},
   components: {
-    StuckButton
+    StuckButton,
+    CasesMap
+  },
+  data () {
+    return {
+      mode: 'lines'
+    }
   },
   methods: {
+    switchMode () {
+      this.mode = this.mode === 'lines' ? 'circles' : 'lines'
+    },
     create (type) {
       if (this.$store.state.general.accessToken) {
         this.$router.push({ path: '/my-case', query: { type } })

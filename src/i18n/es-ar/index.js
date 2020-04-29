@@ -52,6 +52,11 @@ export default {
   },
   case: {
     list: 'Lista de casos',
+    map: 'Mapa de casos',
+    'mapText-lines': 'Cada linea del mapa es la distancia que separa a una persona de su casa en este momento...',
+    'mapText-circles': 'Cada punto del mapa es una persona que quiere volver a su casa y no puede, y una familia que está esperando a alguien...',
+    'show-circles': 'Ver puntos',
+    'show-lines': 'Ver lineas',
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
     savedText1: '¿Cómo sigo?',

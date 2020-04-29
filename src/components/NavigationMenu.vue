@@ -76,6 +76,13 @@ export default {
               loggedIn: true,
               roles: ['admin'],
               icon: 'fas fa-people-carry'
+            },
+            {
+              key: 'generatedata',
+              route: '/admin/cases-data-gen',
+              loggedIn: true,
+              roles: ['admin'],
+              icon: 'fas fa-people-carry'
             }
           ]
         },

@@ -69,6 +69,13 @@ export default {
               loggedIn: true,
               roles: ['admin'],
               icon: 'fa fa-users'
+            },
+            {
+              key: 'contact.title',
+              route: '/admin/contact-messages',
+              loggedIn: true,
+              roles: ['admin'],
+              icon: 'fas fa-people-carry'
             }
           ]
         },

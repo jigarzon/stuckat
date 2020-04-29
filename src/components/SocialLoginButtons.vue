@@ -2,14 +2,13 @@
   <div class="column">
     <span class="row q-py-sm text-subtitle1" v-html="title" />
     <div class="row no-wrap justify-around">
-      <q-btn icon="fab fa-facebook-f" size="xl" unelevated round text-color="white"
-        @click="select('facebook')" class="facebook-btn" />
+      <q-btn icon="fab fa-facebook-f" size="xl" unelevated round
+        text-color="white" @click="select('facebook')" class="facebook-btn" />
       <!-- <q-btn icon="fab fa-instagram" size="xl" unelevated round class="ig-btn"
       @click="select('instagram')"
         text-color="white" /> -->
-      <!-- <q-btn icon="fab fa-google" size="xl" unelevated round class="google-btn"
-      @click="select('google')"
-        text-color="white" /> -->
+      <q-btn icon="fab fa-google" size="xl" unelevated round class="google-btn"
+        @click="select('google')" text-color="white" />
     </div>
   </div>
 </template>

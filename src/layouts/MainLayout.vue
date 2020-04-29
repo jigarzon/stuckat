@@ -40,15 +40,17 @@
       </transition>
     </q-page-container>
     <login-dialog v-model="showLoginDialog" />
-    <q-footer v-if="$q.screen.gt.sm">
-      <q-toolbar color="primary"
-        class="shadow-5 q-pa-xs row no-wrap q-gutter-sm">
-        <span class="text-h6">{{$t('footer.text1')}}</span>
-        <span>{{$t('footer.text2')}}</span>
+    <q-footer v-if="$q.screen.gt.sm" elevated>
+      <q-toolbar>
+        <span class="text-h6 q-px-sm">{{$t('footer.text1')}}</span>
+        <span class="q-px-sm">{{$t('footer.text2')}}</span>
+        <q-separator vertical />
         <router-link class="q-px-sm" to="/terms">{{$t('footer.terms')}}
         </router-link>
-        <router-link to="/privacy">{{$t('footer.privacy')}}</router-link>
-        <a href="https://github.com/jigarzon/stuckat">
+        <router-link class="q-px-sm" to="/privacy">{{$t('footer.privacy')}}
+        </router-link>
+        <q-separator vertical />
+        <a  class="q-px-sm" href="https://github.com/jigarzon/stuckat">
           <q-icon name="fab fa-github" /> {{$t('githubProject')}}</a>
         <q-space />
         <span><b>v</b>{{$runConfig.app_version}}</span>

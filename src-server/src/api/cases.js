@@ -31,6 +31,7 @@ stuckedRouter.get("/cases/all", async (req, res) => {
         if (row.user && row.user.length) {
           var user = row.user[0];
           delete user.facebookToken;
+          delete user.googleToken;
           delete user.avatar;
           row.user = user;
         }

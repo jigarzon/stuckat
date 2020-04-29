@@ -54,13 +54,15 @@ export default {
           name: 'name',
           label: this.$t('name'),
           field: row => row.user.firstName + ' ' + row.user.lastName,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'type',
           label: this.$t('type'),
           field: row => row.type,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'origin',
@@ -84,7 +86,8 @@ export default {
           name: 'origin.address',
           label: 'Dirección origen',
           field: row => row.origin.address,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'destination',
@@ -108,7 +111,8 @@ export default {
           name: 'destination.address',
           label: 'Dirección destino',
           field: row => row.destination.address,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'email',
@@ -116,7 +120,8 @@ export default {
           field: row =>
             (row.user && row.user.contactInfo && row.user.contactInfo.email) ||
             row.user.email,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'phone',
@@ -124,19 +129,22 @@ export default {
           field: row =>
             (row.user && row.user.contactInfo && row.user.contactInfo.phone) ||
             row.user.phone,
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'createdAt',
           label: this.$t('createdAt'),
           field: row => date.formatDate(row.createdAt, 'YYYY-MM-DD HH:mm'),
-          sortable: true
+          sortable: true,
+          align: 'left'
         },
         {
           name: 'mobility',
           label: this.$t('mobility'),
           field: row => (row.mobility ? 'Sí' : 'No'),
-          sortable: true
+          sortable: true,
+          align: 'left'
         }
       ]
     }

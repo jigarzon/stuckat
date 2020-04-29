@@ -17,9 +17,7 @@ export default async ({ ssrContext, store, Vue }) => {
   const vuexCookie = new VuexPersistence({
     restoreState: (key) => {
       var data = cookies.get(key)
-      console.log('restoring')
       if (Vue.prototype.$auth && data && data.general && data.general.accessToken) {
-        console.log('setting token', data.general.accessToken)
         Vue.prototype.$auth.setToken({ access_token: data.general.accessToken })
       }
       return data

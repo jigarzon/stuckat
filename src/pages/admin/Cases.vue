@@ -70,8 +70,8 @@ export default {
           align: 'left',
           field: 'origin',
           sort: (a, b, rowA, rowB) => {
-            var strA = rowA.origin.province + rowA.origin.locality
-            var strB = rowB.origin.province + rowB.origin.locality
+            var strA = rowA.origin.province.label + rowA.origin.locality
+            var strB = rowB.origin.province.label + rowB.origin.locality
             if (strA < strB) {
               return -1
             } else if (strA > strB) {
@@ -96,8 +96,8 @@ export default {
           sortable: true,
           field: 'destination',
           sort: (a, b, rowA, rowB) => {
-            var strA = rowA.destination.province + rowA.destination.locality
-            var strB = rowB.destination.province + rowB.destination.locality
+            var strA = rowA.destination.province.label + rowA.destination.locality
+            var strB = rowB.destination.province.label + rowB.destination.locality
             if (strA < strB) {
               return -1
             } else if (strA > strB) {

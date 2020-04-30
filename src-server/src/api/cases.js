@@ -4,7 +4,7 @@ const stuckedRouter = require("express").Router();
 stuckedRouter.post("/cases", async (req, res) => {
   var Case = req.db.collection("Case");
   var caseInfo = req.body;
-  console.log("creating case for user id", req.user._id);
+  console.log("creating case for user id", req.user._id, caseInfo);
   var userId = new ObjectID(req.user._id);
   caseInfo.userId = userId;
   caseInfo.createdAt = new Date();

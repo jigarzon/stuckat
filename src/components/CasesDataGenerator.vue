@@ -37,9 +37,10 @@ export default {
 
         if (res.data && res.data.localidades.length >= 1) {
           var item = res.data.localidades[0]
+          var rnd = Math.random() * 0.01
           return {
-            lat: item.centroide.lat,
-            lng: item.centroide.lon
+            lat: item.centroide.lat + rnd,
+            lng: item.centroide.lon + rnd
           }
         }
       } catch (e) {
@@ -61,12 +62,12 @@ export default {
           destination = await this.findLocation(currentCase.destination)
         }
         if (origin && destination) {
-          // var rnd = Math.random() * 0.01
+          var rnd = Math.random() * 0.01
           var a, b, c, d
-          a = parseFloat(origin.lng)
-          b = parseFloat(origin.lat)
-          c = parseFloat(destination.lng)
-          d = parseFloat(destination.lat)
+          a = parseFloat(origin.lng) + rnd
+          b = parseFloat(origin.lat) + rnd
+          c = parseFloat(destination.lng) + rnd
+          d = parseFloat(destination.lat) + rnd
           if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)) {
             return targetArray
           } else {

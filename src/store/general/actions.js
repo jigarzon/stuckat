@@ -47,6 +47,19 @@ export async function loadProvinces ({ commit, state }) {
       value: { id: x.id, label: x.nombre },
       label: x.nombre
     }))
+    provs.sort((a, b) => {
+      if (a.label > b.label) return 1
+      if (a.label < b.label) return -1
+      return 0
+    })
     commit('setProvinces', provs)
+  } else {
+    var provinces = state.provinces
+    provinces.sort((a, b) => {
+      if (a.label > b.label) return 1
+      if (a.label < b.label) return -1
+      return 0
+    })
+    commit('setProvinces', provinces)
   }
 }

@@ -16,16 +16,30 @@ stuckedRouter.get("/cases/all", async (req, res) => {
     res.statusCode(401).send("Unauthorized");
   } else {
     var Case = req.db.collection("Case");
-    var data = Case.aggregate([
-      {
-        $lookup: {
-          from: "User",
-          localField: "userId",
-          foreignField: "_id",
-          as: "user"
-        }
+    var matches = [];
+    if (req.query.origin_province_id) {
+      matches.push({
+        "origin.province.id": req.query.origin_province_id
+      });
+    }
+    if (req.query.destination_province_id) {
+      matches.push({
+        "destination.province.id": req.query.destination_province_id
+      });
+    }
+    var aggregation = [];
+    if (matches.length > 0) {
+      aggregation.push({ $match: { $and: matches } });
+    }
+    aggregation.push({
+      $lookup: {
+        from: "User",
+        localField: "userId",
+        foreignField: "_id",
+        as: "user"
       }
-    ]);
+    });
+    var data = Case.aggregate(aggregation);
     data.toArray((err, data) => {
       var resp = data.map(row => {
         if (row.user && row.user.length) {

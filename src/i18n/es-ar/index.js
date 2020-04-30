@@ -14,7 +14,10 @@ export default {
     closeSession: 'Cerrar sesión',
     initSession: 'Iniciar sesión',
     loginBySocial: 'Iniciar sesión con redes sociales',
-    welcomeMessage: 'Esperamos que puedas lograr volver a casa, {firstName}!'
+    welcomeMessage: 'Esperamos que puedas lograr volver a casa, {firstName}!',
+    errors: {
+      wrongSocialLogin: 'Error al iniciar sesión. Prueba ingresando a la aplicación con Chrome o Firefox por favor!'
+    }
   },
   address: {
     province: 'Provincia',

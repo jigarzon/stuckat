@@ -127,6 +127,8 @@ export default {
       var tempCase = this.$q.localStorage.getItem('tempCase')
       if (tempCase) {
         this.currentCase = tempCase
+      } else {
+        this.currentCase.type = this.type
       }
     }
   },
@@ -178,6 +180,7 @@ export default {
         origin: {
           address: null
         },
+        type: 'stuck',
         destination: null,
         mobility: false,
         additionalPlaces: 0,

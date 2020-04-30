@@ -5,7 +5,7 @@ var jwt = require("jsonwebtoken");
 module.exports = function({ config }) {
   return async (req, res, next) => {
     var accessToken;
-    var User = req.db.collection('User');
+    var User = req.db.collection("User");
 
     if (!req.query.access_token) {
       res.status(401).end();
@@ -53,11 +53,17 @@ module.exports = function({ config }) {
     user.avatar =
       resp.data.picture && resp.data.picture.data && resp.data.picture.data.url;
     user.facebookToken = extendResp.data.access_token;
-    var result = await User.findOneAndUpdate(
-      { email: user.email },
-      { $set: user },
-      { upsert: true, returnOriginal: false }
-    );
+    var result;
+    user.updatedAt = new Date()
+    if (user.email) {
+      result = await User.findOneAndUpdate(
+        { email: user.email },
+        { $set: user },
+        { upsert: true, returnOriginal: false }
+      );
+    } else {
+      result = await User.insertOne(user)
+    }
     var payload = {
       user: result.value,
       facebookToken: user.facebookToken
@@ -65,6 +71,6 @@ module.exports = function({ config }) {
     const token = jwt.sign(payload, appConfig.keyphrase, {
       expiresIn: 24 * 60 * 60
     });
-    res.send({user: result.value, accessToken: token})
+    res.send({ user: result.value, accessToken: token });
   };
 };

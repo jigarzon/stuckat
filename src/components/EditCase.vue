@@ -2,8 +2,8 @@
   <q-form class="row" @submit="save">
     <div class="col-12 row text-h2 text-primary"><span
         class="col">{{title || fieldDesc.title}}</span>
-      <q-btn v-if="showBack" icon="fas fa-angle-double-left" no-caps class="q-my-md"
-        @click="$router.go(-1)">
+      <q-btn v-if="showBack" icon="fas fa-angle-double-left" no-caps
+        class="q-my-md" @click="$router.go(-1)">
         {{$t('back')}}</q-btn>
     </div>
     <span class="col-12 text-h6 q-py-md text-secondary" v-if="!hideSubtitle"
@@ -97,7 +97,7 @@
     <div class="row q-pa-sm justify-end full-width" v-if="!disableEdit">
       <q-btn @click="$router.back()" flat no-caps :label="$t('cancel')">
       </q-btn>
-      <q-btn type="submit" color="positive" no-caps push
+      <q-btn type="submit" color="positive" no-caps push :loading="loading"
         :label="$t('case.send')">
       </q-btn>
     </div>
@@ -144,6 +144,7 @@ export default {
   methods: {
     async save () {
       try {
+        this.loading = true
         console.log('saving', this.currentCase)
         await this.$axios.post('/api/cases', this.currentCase)
         await this.$axios.post('/api/contactInfo', this.contactInfo)
@@ -154,6 +155,8 @@ export default {
           color: 'negative',
           message: 'Error guardando el caso: ' + e + ' ' + msg
         })
+      } finally {
+        this.loading = false
       }
     }
   },
@@ -170,6 +173,7 @@ export default {
   data () {
     return {
       maxObsLength: 500,
+      loading: false,
       currentCase: {
         origin: {
           address: null

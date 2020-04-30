@@ -4,12 +4,13 @@
       :options="provinces" map-options emit-value use-input :readonly="readonly"
       :rules="[$validations.required]" :label="$t('address.province')"
       @filter="filterProvince"></q-select>
-    <q-select class="col-12 col-sm-4" v-model="address.locality" map-options dense
-      emit-value :rules="[$validations.required]" use-input clearable :readonly="readonly"
-      :options="localities" :label="$t('address.locality')" input-debounce="500"
-      @filter="filterLocality"></q-select>
-    <q-input class="col-12 col-sm-4" v-model="address.address" dense :readonly="readonly"
-      :label="$t('address.address')" :hint="$t('address.addressHint')"
+    <q-select class="col-12 col-sm-4" v-model="address.locality" map-options
+      dense emit-value :rules="[$validations.required]" use-input clearable
+      :readonly="readonly" :options="localities" :label="$t('address.locality')"
+      input-debounce="500" @filter="filterLocality"></q-select>
+    <q-input class="col-12 col-sm-4" v-model="address.address" dense
+      :readonly="readonly" :label="$t('address.address')"
+      :hint="$t('address.addressHint')"
       :placeholder="$t('address.addressPlaceholder')"
       :rules="[$validations.required]" @blur="completeLatLng()" />
     <q-no-ssr>
@@ -22,7 +23,6 @@
             <div class="text-subtitle">Elegí la ubicación correcta</div>
           </q-card-section>
           <q-card-section style="max-height: 50vh;" class="scroll">
-            {{address}}
             <address-selector class="col" @input="setLocation($event)"
               :addresses="foundAddresses" />
           </q-card-section>
@@ -73,12 +73,10 @@ export default {
       update(() => {
         const needle = val.toLowerCase()
         removeAccents.remove(needle)
-        this.provinces = this.$store.state.general.provinces.filter(
-          v => {
-            var lab = removeAccents.remove(v.label.toLowerCase())
-            return lab.indexOf(needle) > -1
-          }
-        )
+        this.provinces = this.$store.state.general.provinces.filter(v => {
+          var lab = removeAccents.remove(v.label.toLowerCase())
+          return lab.indexOf(needle) > -1
+        })
       })
     },
     async filterLocality (val, update, abort) {
@@ -132,12 +130,20 @@ export default {
               this.address.location = null
               this.showAddressDialog = true
             } else if (!res.data || res.data.length === 0) {
-              this.$q.notify({
-                color: 'negative',
-                message:
-                  'No se encontró ningún resultado para esa dirección, la lat y long no pueden ser autocompletadas',
-                position: 'top'
-              })
+              var url2 =
+                this.$config.geoApiUrl +
+                '/localidades?campos=id,nombre,centroide&provincia=' +
+                encodeURIComponent(this.address.province.id) +
+                '&nombre=' +
+                encodeURIComponent(this.address.locality)
+              var res2 = await this.$axios.get(url2)
+              if (res2.data && res2.data.localidades.length >= 1) {
+                var item = res2.data.localidades[0].centroide
+                this.address.location = {
+                  lat: item.lat,
+                  lng: item.lon
+                }
+              }
             } else {
               this.$q.notify({
                 color: 'teal-5',

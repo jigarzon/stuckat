@@ -46,30 +46,34 @@ export default {
     geoJSON () {
       var items
       if (this.mode === 'lines') {
-        items = this.data.map(item => ({
-          type: 'Feature',
-          geometry: {
-            type: 'LineString',
-            coordinates: [
-              [item.o.lng, item.o.lat],
-              [item.d.lng, item.d.lat]
-            ]
+        items = this.data.map(item => {
+          var rnd = Math.random() * 0.01
+          return {
+            type: 'Feature',
+            geometry: {
+              type: 'LineString',
+              coordinates: [
+                [item.o.lng + rnd, item.o.lat + rnd],
+                [item.d.lng + rnd, item.d.lat + rnd]
+              ]
+            }
           }
-        }))
+        })
       } else {
         items = this.data.reduce((items, item) => {
+          var rnd = Math.random() * 0.01
           items.push({
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [item.o.lng, item.o.lat]
+              coordinates: [item.o.lng + rnd, item.o.lat + rnd]
             }
           })
           items.push({
             type: 'Feature',
             geometry: {
               type: 'Point',
-              coordinates: [item.d.lng, item.d.lat]
+              coordinates: [item.d.lng + rnd, item.d.lat + rnd]
             }
           })
           return items

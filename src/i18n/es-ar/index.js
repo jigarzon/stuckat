@@ -53,13 +53,19 @@ export default {
       'Estamos construyendo esta sección. En los próximos días estará disponible.',
     lookup: 'Buscar gente cerca'
   },
-  case: {
-    list: 'Lista de casos',
+  stats: {
+    title: 'Estadísticas',
+    subtitle: 'La situación de varados hoy',
     map: 'Mapa de casos',
+    mapNote: '<b>Nota:</b>Los puntos se han movido ligeramente en forma aleatoria de la posición real de los varados, para preservar su identidad y seguridad',
     'mapText-lines': 'Cada linea del mapa es la distancia que separa a una persona de su casa en este momento...',
     'mapText-circles': 'Cada punto del mapa es una persona que quiere volver a su casa y no puede, y una familia que está esperando a alguien...',
     'show-circles': 'Ver puntos',
     'show-lines': 'Ver lineas',
+    chartByProvince: 'Varados por provincia'
+  },
+  case: {
+    list: 'Lista de casos',
     myCases: 'Casos que reporté',
     saved: 'Tu caso ha sido guardado',
     savedText1: '¿Cómo sigo?',

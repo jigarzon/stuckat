@@ -1,5 +1,9 @@
 <template>
   <q-page padding class="column">
+    <q-btn class="full-width bg-red text-white" type="a"
+      href="https://www.facebook.com/groups/Grativiajes/permalink/1703667656438561/"
+      icon="info" no-caps size="lg">ATENCIÓN: Información relativa a los
+      permisos nuevos (5/5/2020)</q-btn>
     <span :class="$q.screen.gt.sm ? 'text-h3' : 'text-h4'"
       class="q-py-md">{{$t('landing.text1')}}</span>
     <span class="text-subtitle1">{{$t('landing.text2')}}</span>
@@ -40,7 +44,7 @@
           </q-card-section>
         </q-card>
       </div>
-       <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6">
         <q-card class="fit">
           <q-card-section>
             <div class="text-h6">{{$t('stats.chartByProvince')}}</div>

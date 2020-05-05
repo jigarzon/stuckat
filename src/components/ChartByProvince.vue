@@ -20,9 +20,17 @@ export default {
             position: 'bottom'
           },
           dataLabels: {
-            dropShadow: {
-              blur: 3,
-              opacity: 0.8
+            enabled: true
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  name: {
+                    show: false
+                  }
+                }
+              }
             }
           }
         }

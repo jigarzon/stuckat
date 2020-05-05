@@ -2,10 +2,13 @@ import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet'
 import { Icon, latLng, latLngBounds } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import VueTelInput from 'vue-tel-input'
+import VueApexCharts from 'vue-apexcharts'
 
 export default ({ Vue }) => {
   Vue.use(VueTelInput)
+  Vue.use(VueApexCharts)
 
+  Vue.component('apexchart', VueApexCharts)
   Vue.component('l-map', LMap)
   Vue.component('l-tile-layer', LTileLayer)
   Vue.component('l-marker', LMarker)

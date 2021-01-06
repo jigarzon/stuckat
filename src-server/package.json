@@ -32,7 +32,7 @@
   "author": "Juan Ignacio Garzón",
   "license": "BSD",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.13.3",
     "compression": "^1.7.4",
     "cors": "^2.8.5",

@@ -40,7 +40,7 @@
     "express-mongo-db": "^2.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.6",
-    "nested-object-assign": "^1.0.3"
+    "nested-object-assign": "^1.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
